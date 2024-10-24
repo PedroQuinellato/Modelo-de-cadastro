@@ -1,0 +1,280 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+:root {
+    --primary-color: #2D4059;
+    --secondary-color: #EA5455;
+    --accent-color: #F07B3F;
+    --light-color: #FFD460;
+    --background-color: #f5f7fa;
+    --text-color: #2D4059;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.tab {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.tab:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.tab.active {
+    background-color: var(--secondary-color);
+    box-shadow: var(--card-shadow);
+}
+
+.tab-content {
+    display: none;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e1e5ee;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+input:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(240, 123, 63, 0.1);
+}
+
+button {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-right: 1rem;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+button:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.table-container {
+    margin-top: 2rem;
+    overflow-x: auto;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: white;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e1e5ee;
+}
+
+th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+}
+
+th:first-child {
+    border-top-left-radius: 12px;
+}
+
+th:last-child {
+    border-top-right-radius: 12px;
+}
+
+tr:hover {
+    background-color: #f8f9fd;
+}
+
+.delete-btn {
+    background-color: var(--secondary-color);
+}
+
+.edit-btn {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.timeline-view {
+    display: flex;
+    gap: 2rem;
+    margin: 2rem 0;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+}
+
+.timeline {
+    flex: 1;
+    position: relative;
+    padding: 2rem 0;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--primary-color);
+}
+
+.ponto-timeline {
+    position: relative;
+    margin-left: 3rem;
+    padding: 1.5rem;
+    background: #f8f9fd;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 1px solid #e1e5ee;
+}
+
+.ponto-timeline:before {
+    content: '';
+    position: absolute;
+    left: -1.5rem;
+    top: 50%;
+    width: 1rem;
+    height: 1rem;
+    background: var(--accent-color);
+    border-radius: 50%;
+    transform: translateY(-50%);
+    border: 3px solid white;
+    box-shadow: var(--card-shadow);
+}
+
+.ponto-timeline:hover {
+    transform: translateX(10px);
+    background: white;
+    box-shadow: var(--card-shadow);
+}
+
+.grid-view {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.ponto-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: var(--transition);
+}
+
+.ponto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.mini-map {
+    height: 200px;
+    background: #f0f0f0;
+    position: relative;
+}
+
+.ponto-info {
+    padding: 1.5rem;
+}
+
+.ponto-tools {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    background: #f8f9fd;
+    border-top: 1px solid #e1e5ee;
+}
+
+.tool-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: var(--transition);
+}
+
+.distance-indicator {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

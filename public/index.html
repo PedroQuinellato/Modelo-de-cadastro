@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Ônibus</title>
+    <!-- Seus estilos CSS atuais -->
+    <link rel="stylesheet" href="/PontoCerto/public/assets/css/style.css">
+    <!-- Leaflet para o mapa (mantido para ambas versões) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+    <!-- Container React -->
+    <div id="root"></div>
+
+    <!-- Fallback para versão JavaScript (será escondido se React carregar) -->
+    <div id="js-version" class="container">
+        <!-- Seu HTML atual aqui -->
+        <div class="tabs">
+            <button onclick="showTab('linhas')">Cadastro de Linhas</button>
+            <button onclick="showTab('pontos')">Cadastro de Pontos</button>
+            <button onclick="showTab('visualizacao')">Visualização</button>
+        </div>
+
+        <div id="linhas" class="tab-content active">
+            <h2>Cadastro de Linhas de Ônibus</h2>
+            <form id="linha-form" class="form-group">
+                <div class="form-group">
+                    <label>Número da Linha:</label>
+                    <input type="text" id="numero" required>
+                </div>
+                <div class="form-group">
+                    <label>Tipo de Ônibus:</label>
+                    <select id="tipo" required>
+                        <option value="Comum">Comum</option>
+                        <option value="Executivo">Executivo</option>
+                        <option value="Articulado">Articulado</option>
+                    </select>
+                </div>
+                <button type="submit">Cadastrar Linha</button>
+            </form>
+        </div>
+
+        <div id="pontos" class="tab-content">
+            <h2>Cadastro de Pontos</h2>
+            <form id="ponto-form" class="form-group">
+                <div class="form-group">
+                    <label>Selecione a Linha:</label>
+                    <select id="linha-select" required></select>
+                </div>
+                <div class="form-group">
+                    <label>Latitude:</label>
+                    <input type="number" id="latitude" step="any" required>
+                </div>
+                <div class="form-group">
+                    <label>Longitude:</label>
+                    <input type="number" id="longitude" step="any" required>
+                </div>
+                <button type="submit">Adicionar Ponto</button>
+            </form>
+        </div>
+
+        <div id="visualizacao" class="tab-content">
+            <h2>Linhas e Pontos Cadastrados</h2>
+            <div class="table-container"></div>
+            <div class="route-container">
+                <div class="points-sidebar">
+                    <div id="points-list"></div>
+                </div>
+                <div id="route-map"></div>
+            </div>
+            
+            <form id="edit-form" style="display: none;">
+                <h3>Editar Ponto</h3>
+                <div class="form-group">
+                    <label>Latitude:</label>
+                    <input type="number" name="edit-latitude" step="any" required>
+                </div>
+                <div class="form-group">
+                    <label>Longitude:</label>
+                    <input type="number" name="edit-longitude" step="any" required>
+                </div>
+                <button type="submit">Salvar</button>
+                <button type="button">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    
+    <!-- React (desenvolvimento) -->
+    <script src="/PontoCerto/public/assets/script/gerenciamento.jsx"></script>
+    <script src="/PontoCerto/public/assets/script/app.jsx"></script>
+
+    <!-- Seu script JavaScript atual -->
+    <script src="/PontoCerto/public/assets/script/script.js"></script>
+
+    <!-- Script para verificar e inicializar React -->
+    <script>
+        // Tenta inicializar React
+        try {
+            // Se você estiver usando create-react-app ou similar, 
+            // este script será substituído pelo bundle do React
+            if (typeof React !== 'undefined' && typeof ReactDOM !== 'undefined') {
+                document.getElementById('js-version').style.display = 'none';
+            }
+        } catch (e) {
+            // Se React falhar, mostra versão JavaScript
+            console.log('Usando versão JavaScript fallback');
+            document.getElementById('js-version').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
